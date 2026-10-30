@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belated Happy Birthday Nayem ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #f7ebe1; color: #5a3d31; font-family: 'Poppins', sans-serif; min-height: 100vh; display: flex; justify-content: center; align-items: center; overflow-x: hidden; position: relative; padding: 20px 10px; }
+        .petal { position: absolute; background: #f4acb7; border-radius: 150% 0 150% 0; opacity: 0.6; pointer-events: none; animation: animate-petals 10s linear infinite; }
+        @keyframes animate-petals { 0% { top: -10%; transform: translateX(0) rotate(0deg); } 100% { top: 110%; transform: translateX(100px) rotate(360deg); } }
+        .floating-heart { position: absolute; font-size: 20px; pointer-events: none; opacity: 0.5; animation: float-up 8s infinite linear; }
+        @keyframes float-up { 0% { transform: translateY(100vh) scale(0.8); opacity: 0; } 50% { opacity: 0.7; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
+        .music-btn { position: fixed; top: 15px; right: 15px; background: #fff8f3; border: 1px solid #ebd8cb; border-radius: 50px; padding: 8px 15px; font-size: 0.85rem; color: #8b2626; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 100; display: flex; align-items: center; gap: 6px; font-weight: 600; }
+        .container { width: 100%; max-width: 420px; text-align: center; z-index: 10; }
+        .stage { display: none; }
+        .stage.active { display: block; animation: fadeIn 0.8s ease-in-out; }
+        .gift-box { background: #fff8f3; padding: 50px 25px; border-radius: 25px; box-shadow: 0 15px 35px rgba(168, 67, 67, 0.1); border: 1px solid #ebd8cb; cursor: pointer; transition: transform 0.3s; }
+        .gift-box:active { transform: scale(0.98); }
+        .gift-icon { font-size: 80px; animation: bounce 2s infinite ease-in-out; }
+        .gift-title { font-family: 'Sacramento', cursive; font-size: 2.8rem; color: #8b2626; margin-top: 15px; }
+        .gift-sub { font-size: 0.85rem; color: #a07a6e; margin-top: 5px; font-style: italic; }
+        .lock-card { background: rgba(255, 248, 243, 0.95); padding: 30px 20px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); border: 1px solid #ebd8cb; backdrop-filter: blur(5px); }
+        .badge { display: inline-block; background: #a84343; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 12px; font-weight: 600; }
+        .lock-card h3 { font-weight: 400; color: #7a5242; margin-bottom: 15px; }
+        .dots { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #a84343; background: transparent; transition: all 0.2s; }
+        .dot.filled { background: #a84343; box-shadow: 0 0 8px rgba(168,67,67,0.4); }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 260px; margin: 0 auto; }
+        .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #f3e3d8; color: #5a3d31; font-size: 1.2rem; font-weight: 600; cursor: pointer; margin: 0 auto; display: flex; justify-content: center; align-items: center; transition: background 0.2s; }
+        .keypad button:active { background: #a84343; color: white; }
+        .keypad .btn-text { border-radius: 15px; width: auto; height: auto; padding: 10px; font-size: 0.85rem; }
+        .main-head { font-family: 'Sacramento', cursive; font-size: 2.8rem; color: #8b2626; margin-bottom: 5px; }
+        .main-sub { font-size: 0.95rem; color: #735246; line-height: 1.6; margin-bottom: 25px; }
+        .surprise-btn { background: linear-gradient(135deg, #a84343, #d96b6b); color: white; border: none; padding: 14px 28px; font-size: 1rem; font-weight: 600; border-radius: 30px; cursor: pointer; box-shadow: 0 8px 20px rgba(168,67,67,0.25); margin-bottom: 30px; transition: transform 0.2s; }
+        .surprise-btn:active { transform: scale(0.95); }
+        .polaroid-container { display: flex; flex-direction: column; gap: 25px; align-items: center; margin-bottom: 35px; }
+        .polaroid { background: #ffffff; padding: 12px 12px 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px; width: 100%; max-width: 320px; transition: transform 0.3s; position: relative; }
+        .polaroid:hover { transform: scale(1.02) rotate(0deg) !important; }
+        .polaroid.p1 { transform: rotate(-3deg); }
+        .polaroid.p2 { transform: rotate(2.5deg); }
+        .polaroid.p3 { transform: rotate(-1.5deg); }
+        .polaroid img { width: 100%; height: 260px; object-fit: cover; border-radius: 2px; }
+        .polaroid p { font-family: 'Caveat', cursive; font-size: 1.6rem; margin-top: 10px; color: #4a332a; }
+        .letter-box { background: #fffaf5; padding: 30px 20px; border-radius: 20px; border: 1px solid #ebd8cb; text-align: left; box-shadow: 0 5px 20px rgba(0,0,0,0.04); margin-bottom: 25px; }
+        .letter-box h2 { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: #8b2626; margin-bottom: 15px; }
+        .letter-text { font-size: 0.95rem; line-height: 1.8; color: #5a3d31; white-space: pre-line; }
+        .sign { text-align: right; font-family: 'Caveat', cursive; font-size: 1.5rem; color: #8b2626; margin-top: 20px; }
+        .footer-text { font-size: 0.85rem; color: #8c6d62; margin-top: 15px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://cdn.joshwcomeau.com/sounds/happy-birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" onclick="toggleMusic(event)">
+        <span id="music-icon">🎶</span>
+        <span id="music-text">Play Song</span>
+    </button>
+
+    <div id="petals-container"></div>
+    <div class="floating-heart" style="left:10%;animation-delay:0s">❤️</div>
+    <div class="floating-heart" style="left:30%;animation-delay:2s">✨</div>
+    <div class="floating-heart" style="left:65%;animation-delay:4s">💖</div>
+    <div class="floating-heart" style="left:85%;animation-delay:1s">🌸</div>
+
+    <div class="container">
+        <!-- STAGE 1 -->
+        <div id="stage-1" class="stage active">
+            <div class="gift-box" onclick="goToStage(2)">
+                <div class="gift-icon">🎁</div>
+                <h1 class="gift-title">For You, Brother!</h1>
+                <p class="gift-sub">(Tap to open a late surprise)</p>
+            </div>
+        </div>
+
+        <!-- STAGE 2 -->
+        <div id="stage-2" class="stage">
+            <div class="lock-card">
+                <div class="badge">Secret Entry 🔒</div>
+                <h3>Enter Passkey</h3>
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="keypad">
+                    <button onclick="press(1)">1</button>
+                    <button onclick="press(2)">2</button>
+                    <button onclick="press(3)">3</button>
+                    <button onclick="press(4)">4</button>
+                    <button onclick="press(5)">5</button>
+                    <button onclick="press(6)">6</button>
+                    <button onclick="press(7)">7</button>
+                    <button onclick="press(8)">8</button>
+                    <button onclick="press(9)">9</button>
+                    <button onclick="resetPass()" class="btn-text">Clear</button>
+                    <button onclick="press(0)">0</button>
+                    <button onclick="checkPass()" class="btn-text">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 3 -->
+        <div id="stage-3" class="stage">
+            <div class="badge">Belated Surprise 🎂</div>
+            <h1 class="main-head">Belated Happy Birthday, Nayem! ❤️</h1>
+            <p class="main-sub">
+                দিনটা একটু পার হয়ে গেছে তো কী হয়েছে? ভালোবাসা আর শুভকামনা তো আর ফুরিয়ে যায়নি! ✨<br>
+                বিলম্বিত জন্মদিনের অনেক অনেক শুভেচ্ছা, প্রিয় ভাই!
+            </p>
+            
+            <button class="surprise-btn" onclick="triggerSurprise()">
+                Click For A Surprise 🎁
+            </button>
+
+            <!-- PHOTOS -->
+            <div class="polaroid-container">
+                <div class="polaroid p1">
+                    <img src="pic1.jpg" alt="Nayem 1">
+                    <p>Brothers for Life ❤️</p>
+                </div>
+                <div class="polaroid p2">
+                    <img src="pic2.jpg" alt="Nayem 2">
+                    <p>Unforgettable Memories ✨</p>
+                </div>
+                <div class="polaroid p3">
+                    <img src="pic3.jpg" alt="Nayem 3">
+                    <p>Partners in Crime 🌸</p>
+                </div>
+            </div>
+
+            <!-- LETTER -->
+            <div class="letter-box">
+                <h2>To My Dear Brother,</h2>
+                <div id="typed-text" class="letter-text"></div>
+                <div class="sign">
+                    Forever & Always,<br>
+                    Your Seyam ❤️
+                </div>
+            </div>
+
+            <div class="footer-text">
+                Crafted with ❤️ for Nayem
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let inputPass = "";
+        const correctPass = "8888"; // পাসওয়ার্ড চাইলে পাল্টে নিতে পারো
+        const music = document.getElementById("bg-music");
+        
+        const letterMessage = "যদিও জন্মদিনের দিনটা একটু পার হয়ে গেছে, তবুও আমার কাছে তোর জন্য শুভকামনাগুলো সবসময় তাজা!\n\n" +
+            "Nayem, তুই শুধু আমার ভাই না, তুই আমার জীবনের অসংখ্য সুন্দর স্মৃতির অংশ। ঝগড়া, হাসি, দুষ্টুমি আর একসঙ্গে কাটানো মুহূর্তগুলো সবসময় আমার কাছে স্পেশাল।\n\n" +
+            "জীবনে অনেক বড় হ, নিজের স্বপ্নগুলো পূরণ কর। প্রতিটি পদক্ষেপে সাফল্য আসুক। জন্মদিনের ডেট পার হয়েছে তো কি হয়েছে, সেলিব্রেশন তো যখন-তখন করা যায়! 😉\n\n" +
+            "সবসময় ভালো থাকিস, হাসিখুশি থাকিস। আমাদের এই ভাইয়ের বন্ধন যেন সারাজীবন এমনই থাকে।\n\n" +
+            "Belated Happy Birthday, Brother! ❤️";
+
+        function forcePlayMusic() {
+            music.play().then(() => {
+                document.getElementById("music-text").innerText = "Pause Song";
+            }).catch(() => {});
+        }
+
+        function goToStage(stageNum) {
+            document.querySelectorAll(".stage").forEach(s => {
+                s.classList.remove("active");
+            });
+            document.getElementById(`stage-${stageNum}`).classList.add("active");
+            forcePlayMusic();
+        }
+
+        function toggleMusic(e) {
+            e.stopPropagation();
+            const text = document.getElementById("music-text");
+            if (music.paused) {
+                forcePlayMusic();
+            } else {
+                music.pause();
+                text.innerText = "Play Song";
+            }
+        }
+
+        function triggerSurprise() {
+            confetti({
+                particleCount: 120,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+            setTimeout(() => {
+                alert("Belated Happy Birthday, Brother! দেরিতে হলেও সারপ্রাইজ কেমন লাগলো? 😂❤️");
+            }, 300);
+        }
+
+        function press(num) {
+            if (inputPass.length < 4) {
+                inputPass += num;
+                updateDots();
+            }
+            if (inputPass.length === 4) {
+                setTimeout(checkPass, 200);
+            }
+        }
+
+        function resetPass() {
+            inputPass = "";
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                if (index < inputPass.length) {
+                    dot.classList.add("filled");
+                } else {
+                    dot.classList.remove("filled");
+                }
+            });
+        }
+
+        function checkPass() {
+            if (inputPass === correctPass) {
+                goToStage(3);
+                startTyping();
+            } else {
+                alert("Wrong Passkey! Try again ❤️");
+                resetPass();
+            }
+        }
+
+        function startTyping() {
+            let i = 0;
+            const speed = 40;
+            const target = document.getElementById("typed-text");
+            target.innerHTML = "";
+            function type() {
+                if (i < letterMessage.length) {
+                    const char = letterMessage.charAt(i);
+                    if (char === "\n") {
+                        target.innerHTML += "<br>";
+                    } else {
+                        target.innerHTML += char;
+                    }
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        function createPetals() {
+            const container = document.getElementById("petals-container");
+            for (let i = 0; i < 15; i++) {
+                const petal = document.createElement("div");
+                petal.classList.add("petal");
+                petal.style.left = Math.random() * 100 + "vw";
+                petal.style.width = Math.random() * 12 + 8 + "px";
+                petal.style.height = Math.random() * 12 + 8 + "px";
+                petal.style.animationDuration = Math.random() * 5 + 5 + "s";
+                petal.style.animationDelay = Math.random() * 5 + "s";
+                container.appendChild(petal);
+            }
+        }
+        createPetals();
+    </script>
+</body>
+</html>
